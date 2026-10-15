@@ -1,0 +1,31 @@
+{
+  "_comment": "视频号「图文」作品（没有视频，只有图片 + BGM）。picInfo[].url / bgmInfo 字段名来自参考实现；URL 是占位串。",
+  "data": {
+    "authorInfo": {
+      "nickname": "示例摄影号",
+      "headImgUrl": "https://wx.qlogo.cn/finderhead/ver_1/EXAMPLEHEAD/0"
+    },
+    "feedInfo": {
+      "description": "周末的巷子口，随手拍了几张",
+      "createtime": 1791000000,
+      "coverUrl": "https://finder.video.qq.com/251/20304/stodownload?encfilekey=PIC1KEY&token=PIC1TOKEN&hy=SH&idx=1",
+      "picInfo": [
+        { "url": "https://finder.video.qq.com/251/20304/stodownload?encfilekey=PIC1KEY&token=PIC1TOKEN&hy=SH&idx=1&wxampicformat=503&picformat=200" },
+        { "url": "https://finder.video.qq.com/251/20304/stodownload?encfilekey=PIC2KEY&token=PIC2TOKEN&hy=SH&idx=1&wxampicformat=503&picformat=200" },
+        { "url": "https://finder.video.qq.com/251/20304/stodownload?encfilekey=PIC3KEY&token=PIC3TOKEN&hy=SH&idx=1&wxampicformat=503&picformat=200" }
+      ],
+      "bgmInfo": {
+        "name": "示例背景音乐",
+        "bgmUrl": "https://finder.video.qq.com/251/20304/stodownload?encfilekey=BGMKEY&token=BGMTOKEN&hy=SH&idx=1"
+      },
+      "likeCountFmt": "12",
+      "favCountFmt": "3",
+      "forwardCountFmt": "1",
+      "commentCountFmt": "0",
+      "errMsg": { "type": 0 }
+    },
+    "errMsg": { "type": 0 }
+  },
+  "errCode": 0,
+  "errMsg": ""
+}

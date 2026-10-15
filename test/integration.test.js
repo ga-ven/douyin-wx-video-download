@@ -65,11 +65,12 @@ function videoInspector(base) {
     { url: `${base}/v-265.mp4`, all_urls: [], width: 720, height: 1280, quality_height: 720, size: 2048, file_hash: null, codec: 'hevc', label: '720_1_1', gear: '720_1_1', definition: '720p', vmaf: 97.7 },
   ];
   return async () => ({
-    aweme_id: '1234567890123456789',
+    id: '1234567890123456789',
+    platform: 'douyin',
     source: 'app_feed',
     source_host: 'mock',
     meta: {
-      aweme_id: '1234567890123456789', title: '集成测试作品', author: 'tester',
+      id: '1234567890123456789', platform: 'douyin', title: '集成测试作品', author: 'tester',
       duration_sec: 12.5, created_at: '2026-10-15T00:00:00.000Z', is_image_post: false, image_count: 0,
     },
     streams,
@@ -80,11 +81,12 @@ function videoInspector(base) {
 
 function imageInspector(base) {
   return async () => ({
-    aweme_id: '9876543210987654321',
+    id: '9876543210987654321',
+    platform: 'douyin',
     source: 'app_feed',
     source_host: 'mock',
     meta: {
-      aweme_id: '9876543210987654321', title: '图文作品', author: 'tester',
+      id: '9876543210987654321', platform: 'douyin', title: '图文作品', author: 'tester',
       duration_sec: null, created_at: null, is_image_post: true, image_count: 2,
     },
     streams: [],

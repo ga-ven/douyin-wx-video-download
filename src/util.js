@@ -10,6 +10,20 @@ export const EXIT = {
   FETCH_FAILED: 4,
   DOWNLOAD_FAILED: 5,
   VERIFY_FAILED: 6,
+  NEED_COOKIE: 7,
+};
+
+/** 业务错误码（字符串）→ 进程退出码。 */
+export const EXIT_BY_CODE = {
+  RESOLVE_FAILED: 3,
+  NEED_COOKIE: 7,
+  COOKIE_INVALID: 7,
+  FEED_UNAVAILABLE: 4,
+  UPSTREAM: 4,
+  TIMEOUT: 4,
+  NETWORK: 4,
+  CHANNELS_ERROR: 4,
+  USAGE: 2,
 };
 
 export const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -111,14 +125,17 @@ export function truncateKeepingTail(s, maxLen, tail = '') {
 
 /**
  * 按模板生成文件名。可选占位符: {author} {title} {id} {date}
+ *
+ * id 在抖音那边是 aweme_id、视频号那边是 sph 短 id，统一叫 id；
+ * `awemeId` 保留为旧字段名的兼容别名。
  */
-export function buildFilename({ author, title, awemeId, date }, { template, maxLen = 100, ext = 'mp4' } = {}) {
+export function buildFilename({ author, title, id, awemeId, date }, { template, maxLen = 100, ext = 'mp4' } = {}) {
   // 每个占位符单独清洗 + 单独修括号，避免"整串修括号"把 id 一起切掉
   const cleanPart = (raw, limit, fallback) => trimUnbalancedTail(sanitizeFilename(raw, { maxLen: limit, fallback }));
   const safe = {
     author: cleanPart(author, 24, 'unknown'),
     title: cleanPart(title, 40, 'video'),
-    id: String(awemeId ?? ''),
+    id: String(id ?? awemeId ?? ''),
     date: date || '',
   };
 

@@ -1,0 +1,19 @@
+{
+  "_comment": "真实抓到的响应：不带授权 token 直接拿 exportId 去问 get_feed_info 时会得到这个。用于测试「作品存在但不可播」这条错误路径。",
+  "data": {
+    "errMsg": {
+      "type": 2,
+      "title": "此内容暂时无法播放"
+    },
+    "sceneInfo": {
+      "dynamicExportId": "export/UzFfBgAAxMWEBFM6OEyok8zT4DCsIoDrWQYsQCdTa31hAD4Ba1iVs2AqQA",
+      "commentScene": 39,
+      "expiredTime": 1792047137,
+      "requestScene": 0,
+      "entryScene": 64,
+      "entryCardType": 48
+    }
+  },
+  "errCode": 0,
+  "errMsg": ""
+}

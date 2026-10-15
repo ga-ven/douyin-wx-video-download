@@ -1,0 +1,41 @@
+{
+  "_comment": "视频号 finder-preview/api/feed/get_feed_info 的响应（视频作品）。data.feedInfo.h264VideoInfo.videoUrl / h265VideoInfo.videoUrl / videoUrl 以及 authorInfo.nickname、description、createtime、coverUrl、picInfo 这些字段来自参考实现的渲染逻辑与真实响应比对；与真实响应不同之处：把各 key/token 换成了占位串。",
+  "data": {
+    "authorInfo": {
+      "nickname": "小马扎十级磕学家",
+      "headImgUrl": "https://wx.qlogo.cn/finderhead/ver_1/EXAMPLEHEAD/0",
+      "authIconUrl": "https://dldir1v6.qq.com/weixin/checkresupdate/icons_filled_channels_authentication_enterprise_example.png"
+    },
+    "feedInfo": {
+      "description": "范丞丞可太聪明了  #现在就出发第3季   #鹅滴神片",
+      "createtime": 1791885657,
+      "coverUrl": "https://finder.video.qq.com/251/20304/stodownload?encfilekey=COVERKEY&token=COVERTOKEN&hy=SH&idx=1&m=&scene=2&uzid=1&wxampicformat=503&picformat=200",
+      "picInfo": [],
+      "likeCountFmt": "688",
+      "favCountFmt": "3192",
+      "forwardCountFmt": "223",
+      "commentCountFmt": "15",
+      "isHardAd": false,
+      "jumpInfo": { "wording": "南昌市" },
+      "h264VideoInfo": {
+        "videoUrl": "https://finder.video.qq.com/251/20302/stodownload?encfilekey=H264KEYAAA&token=H264TOKENAAA&hy=SH&idx=1&m=94a927846739231f7a7013bb373a6c6b&uzid=7a22e&X-snsvideoflag=xWT111&base_data=CAMSBnhXVDExMylkCgoKBnhXVDExMxAACgoKBnhXVDExMhABCgoKBnhXVDExMRAA&sign=SIGNH264AAA"
+      },
+      "h265VideoInfo": {
+        "videoUrl": "https://finder.video.qq.com/251/20302/stodownload?encfilekey=H265KEYBBB&token=H265TOKENBBB&hy=SH&idx=1&m=94a927846739231f7a7013bb373a6c6b&uzid=7a22e&X-snsvideoflag=xWT113&base_data=CAMSBnhXVDExMylkCgoKBnhXVDExMxAACgoKBnhXVDExMhABCgoKBnhXVDExMRAA&sign=SIGNH265BBB"
+      },
+      "videoUrl": "https://finder.video.qq.com/251/20302/stodownload?encfilekey=H264KEYAAA&token=H264TOKENAAA&hy=SH&idx=1&m=94a927846739231f7a7013bb373a6c6b&uzid=7a22e&X-snsvideoflag=xWT111&base_data=CAMSBnhXVDExMylkCgoKBnhXVDExMxAACgoKBnhXVDExMhABCgoKBnhXVDExMRAA&sign=SIGNH264AAA",
+      "errMsg": { "type": 0 }
+    },
+    "sceneInfo": {
+      "dynamicExportId": "export/UzFfBgAAxMWEBFM6OEyok8zT4DCsIoDrWQYsQCdTa31hAD4Ba1iVs2AqQA",
+      "commentScene": 39,
+      "expiredTime": 1792047137,
+      "requestScene": 0,
+      "entryScene": 64,
+      "entryCardType": 48
+    },
+    "errMsg": { "type": 0 }
+  },
+  "errCode": 0,
+  "errMsg": ""
+}

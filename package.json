@@ -1,15 +1,15 @@
 {
-  "name": "douyin-video-download",
-  "version": "1.0.0",
-  "description": "零依赖抖音视频/图集下载器 —— 走 App Feed 接口，免 cookie、免签名、无水印，支持全档位选择与文件校验",
+  "name": "douyin-wx-video-download",
+  "version": "2.0.0",
+  "description": "零依赖中文短视频下载器：抖音 + 微信视频号。抖音走 App Feed 接口（免 cookie、免签名、无水印）；视频号走元宝解析链路（需自备元宝 Cookie）",
   "type": "module",
   "main": "./src/index.js",
   "exports": {
     ".": "./src/index.js"
   },
   "bin": {
-    "douyin-video-download": "./bin/cli.js",
-    "dygrab": "./bin/cli.js"
+    "douyin-wx-video-download": "./bin/cli.js",
+    "dwvd": "./bin/cli.js"
   },
   "files": [
     "bin",
@@ -27,6 +27,10 @@
   "keywords": [
     "douyin",
     "抖音",
+    "weixin",
+    "wechat",
+    "channels",
+    "视频号",
     "video-downloader",
     "no-watermark",
     "无水印",
@@ -36,7 +40,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ga-ven/douyin-video-download.git"
+    "url": "git+https://github.com/ga-ven/douyin-wx-video-download.git"
   },
   "dependencies": {}
 }

@@ -14,7 +14,7 @@
  *   客户端 UA        -> 数百 KB 真实 JSON
  */
 
-import { withRetry, sleep } from './util.js';
+import { withRetry, sleep } from '../util.js';
 
 /** 抖音 Android 客户端 UA。版本号不必最新，能过校验即可。 */
 export const APP_UA = 'com.ss.android.ugc.aweme/290101 (Linux; U; Android 12; zh_CN; SM-G988N; '
@@ -110,21 +110,26 @@ export function isImagePost(item) {
 export function describeAweme(item, awemeId) {
   const v = item?.video || {};
   const stats = item?.statistics || {};
+  const id = String(item?.aweme_id ?? awemeId);
   return {
-    aweme_id: String(item?.aweme_id ?? awemeId),
+    id,
+    platform: 'douyin',
     title: item?.desc || '',
+    description: item?.desc || '',
     author: item?.author?.nickname || '',
     author_id: item?.author?.sec_uid || '',
+    author_avatar: item?.author?.avatar_thumb?.url_list?.[0] || '',
     duration_sec: v.duration ? Number((v.duration / 1000).toFixed(3)) : null,
     created_at: item?.create_time ? new Date(item.create_time * 1000).toISOString() : null,
     is_image_post: isImagePost(item),
     image_count: isImagePost(item) ? item.images.length : 0,
+    cover_url: v.cover?.url_list?.[0] || v.origin_cover?.url_list?.[0] || '',
     stats: {
       digg: stats.digg_count ?? null,
       comment: stats.comment_count ?? null,
       share: stats.share_count ?? null,
       play: stats.play_count ?? null,
     },
-    page_url: `https://www.douyin.com/video/${item?.aweme_id ?? awemeId}`,
+    page_url: `https://www.douyin.com/video/${id}`,
   };
 }

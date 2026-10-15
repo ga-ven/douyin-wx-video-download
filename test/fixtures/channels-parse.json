@@ -1,0 +1,9 @@
+{
+  "_comment": "腾讯元宝 get_parse_result 的响应。只用到 data.wx_export_id 和 data.playable_url 两个字段（这两个是从参考实现 ltaoo/wx_channels_download 的 worker.js 里确认的），其余字段是按其返回风格构造的，解析器不依赖它们。",
+  "data": {
+    "wx_export_id": "export/UzFfBgAAxMWEBFM6OEyok8zT4DCsIoDrWQYsQCdTa31hAD4Ba1iVs2AqQA",
+    "playable_url": "https://channels.weixin.qq.com/finder-preview/pages/feed?entry_card_type=48&comment_scene=39&appid=0&token=TESTTOKEN0123456789&entry_scene=0&eid=export%2FUzFfBgAAxMWEBFM6OEyok8zT4DCsIoDrWQYsQCdTa31hAD4Ba1iVs2AqQA",
+    "title": "范丞丞可太聪明了",
+    "cover_url": "https://finder.video.qq.com/251/20304/stodownload?encfilekey=COVERKEY&token=COVERTOKEN&hy=SH&idx=1"
+  }
+}

@@ -10,9 +10,9 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { sanitizeFilename, buildFilename, formatBytes, withRetry, trimUnbalancedTail, truncateKeepingTail, toNativePath } from '../src/util.js';
-import { extractUrl, extractIdFromString, resolveAwemeId } from '../src/resolve.js';
-import { enumerateStreams, enumerateImages, pickStream, watermarkedStream } from '../src/streams.js';
-import { describeAweme, isImagePost } from '../src/feed.js';
+import { extractUrl, extractIdFromString, resolveAwemeId } from '../src/douyin/resolve.js';
+import { enumerateStreams, enumerateImages, pickStream, watermarkedStream } from '../src/douyin/streams.js';
+import { describeAweme, isImagePost } from '../src/douyin/feed.js';
 import { verifyAgainstHash } from '../src/download.js';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
@@ -265,6 +265,8 @@ test('enumerateImages 取不带 tplv 缩放后缀的原图', () => {
 
 test('describeAweme 抽出常用元信息', () => {
   const m = describeAweme(videoFixture, '7694602355278543542');
+  assert.equal(m.id, '7694602355278543542');
+  assert.equal(m.platform, 'douyin');
   assert.equal(m.author, '元宝✨');
   assert.equal(m.duration_sec, 15.034);
   assert.equal(m.is_image_post, false);
