@@ -9,7 +9,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { sanitizeFilename, buildFilename, formatBytes, withRetry, trimUnbalancedTail, truncateKeepingTail } from '../src/util.js';
+import { sanitizeFilename, buildFilename, formatBytes, withRetry, trimUnbalancedTail, truncateKeepingTail, toNativePath } from '../src/util.js';
 import { extractUrl, extractIdFromString, resolveAwemeId } from '../src/resolve.js';
 import { enumerateStreams, enumerateImages, pickStream, watermarkedStream } from '../src/streams.js';
 import { describeAweme, isImagePost } from '../src/feed.js';
@@ -27,6 +27,24 @@ test('formatBytes 走对单位', () => {
   assert.equal(formatBytes(2485417), '2.37 MB');
   assert.equal(formatBytes(0), '0 B');
   assert.equal(formatBytes(null), '?');
+});
+
+test('toNativePath 把 git-bash 风格路径还原成盘符路径', () => {
+  if (process.platform === 'win32') {
+    assert.equal(toNativePath('/d/coding/dy'), 'D:\\coding\\dy');
+    assert.equal(toNativePath('/c/Users/PC'), 'C:\\Users\\PC');
+    assert.equal(toNativePath('/d'), 'D:\\');
+    // 不是盘符挂载的绝对路径（/tmp、/usr）保持原样，交给 Node 处理
+    assert.equal(toNativePath('/tmp/out'), '/tmp/out');
+    // 已经是原生路径 / 相对路径，一律不动
+    assert.equal(toNativePath('D:\\coding\\dy'), 'D:\\coding\\dy');
+    assert.equal(toNativePath('relative/out'), 'relative/out');
+  } else {
+    // 非 Windows 平台是恒等函数
+    assert.equal(toNativePath('/d/coding/dy'), '/d/coding/dy');
+    assert.equal(toNativePath('./out'), './out');
+  }
+  assert.equal(toNativePath(null), '');
 });
 
 test('sanitizeFilename 干掉各平台非法字符', () => {

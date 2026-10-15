@@ -14,6 +14,27 @@ export const EXIT = {
 
 export const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
+/**
+ * 把 git-bash / MSYS2 风格路径还原成 Windows 原生路径。
+ *
+ * `-d /d/proj/out` 这种写法在 bash 里很自然，但 MSYS 的自动转换并不总是生效
+ * （实测本机就没转），于是 `/d/proj/out` 会被 Node 当成「当前盘符 + \d\proj\out」，
+ * 静默在 D: 底下多出一层 `d\` 目录 —— 不报错、文件也确实下下来了，只是位置不对，
+ * 非常难发现。这里统一在落盘前归一化一次。
+ *
+ * 只认 `/<单字母>/...`（也就是挂载盘符）这一种形状；`/tmp`、`/usr/bin` 之类
+ * 保持原样，交给 Node 自己处理。
+ */
+export function toNativePath(p) {
+  const s = String(p ?? '');
+  if (process.platform !== 'win32') return s;
+  const m = /^\/([a-zA-Z])(?:\/(.*))?$/.exec(s);
+  if (!m) return s;
+  const drive = m[1].toUpperCase();
+  const rest = (m[2] || '').replace(/\//g, '\\');
+  return rest ? `${drive}:\\${rest}` : `${drive}:\\`;
+}
+
 export function formatBytes(n) {
   if (n === null || n === undefined || Number.isNaN(n)) return '?';
   if (n < 1024) return `${n} B`;

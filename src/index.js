@@ -14,7 +14,7 @@ import { fetchAweme, isImagePost, describeAweme } from './feed.js';
 import { enumerateStreams, enumerateImages, pickStream, watermarkedStream } from './streams.js';
 import { downloadFile, verifyAgainstHash, md5File, DEFAULT_UA } from './download.js';
 import { fetchViaBrowser } from './browser.js';
-import { buildFilename, formatBytes, EXIT, sleep } from './util.js';
+import { buildFilename, formatBytes, toNativePath, EXIT, sleep } from './util.js';
 
 export { resolveAwemeId } from './resolve.js';
 export { enumerateStreams, enumerateImages, pickStream } from './streams.js';
@@ -138,7 +138,7 @@ export async function download(input, opts = {}) {
     date: info.meta.created_at ? info.meta.created_at.slice(0, 10) : '',
   }, { template, ext: 'mp4' });
 
-  const target = out ? path.resolve(out) : path.join(path.resolve(outDir), base);
+  const target = out ? path.resolve(toNativePath(out)) : path.join(path.resolve(toNativePath(outDir)), base);
   const result = {
     aweme_id: info.aweme_id,
     source: info.source,
@@ -154,8 +154,8 @@ export async function download(input, opts = {}) {
     const images = info.images;
     if (!images.length) throw fail('识别为图集但没有解析出任何图片', EXIT.FETCH_FAILED);
     const dir = out
-      ? out.replace(/\.mp4$/i, '')
-      : path.join(path.resolve(outDir), base.replace(/\.mp4$/i, ''));
+      ? toNativePath(out).replace(/\.mp4$/i, '')
+      : path.join(path.resolve(toNativePath(outDir)), base.replace(/\.mp4$/i, ''));
     await fs.promises.mkdir(dir, { recursive: true });
     logger?.step(`图集作品，共 ${images.length} 张原图 -> ${dir}`);
     for (let i = 0; i < images.length; i++) {
@@ -264,5 +264,6 @@ export async function download(input, opts = {}) {
 }
 
 export { EXIT };
+export { toNativePath } from './util.js';
 export const version = '1.0.0';
 export { sleep };
