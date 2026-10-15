@@ -1,0 +1,42 @@
+{
+  "name": "douyin-video-download",
+  "version": "1.0.0",
+  "description": "零依赖抖音视频/图集下载器 —— 走 App Feed 接口，免 cookie、免签名、无水印，支持全档位选择与文件校验",
+  "type": "module",
+  "main": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "bin": {
+    "douyin-video-download": "./bin/cli.js",
+    "dygrab": "./bin/cli.js"
+  },
+  "files": [
+    "bin",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18.17"
+  },
+  "scripts": {
+    "test": "node --test \"test/**/*.test.js\"",
+    "test:live": "node --test test/live.test.js"
+  },
+  "keywords": [
+    "douyin",
+    "抖音",
+    "video-downloader",
+    "no-watermark",
+    "无水印",
+    "aweme",
+    "cli"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ga-ven/douyin-video-download.git"
+  },
+  "dependencies": {}
+}

@@ -1,0 +1,29 @@
+{
+  "aweme_id": "7694068825990714533",
+  "desc": "图文作品示例 @吃糖吐泡泡",
+  "create_time": 1791800000,
+  "author": { "nickname": "吃糖吐泡泡（养分版）", "sec_uid": "MS4wLjABAAAAfake2" },
+  "statistics": { "digg_count": 100, "comment_count": 1, "share_count": 2, "play_count": 30 },
+  "images": [
+    {
+      "width": 1080,
+      "height": 1440,
+      "url_list": [
+        "https://example.invalid/img1~tplv-resize:720:960.webp",
+        "https://example.invalid/img1.jpeg"
+      ]
+    },
+    {
+      "width": 1080,
+      "height": 1440,
+      "url_list": [
+        "https://example.invalid/img2.jpeg"
+      ]
+    }
+  ],
+  "video": {
+    "duration": 0,
+    "play_addr": { "width": 0, "height": 0, "url_list": [] },
+    "bit_rate": []
+  }
+}

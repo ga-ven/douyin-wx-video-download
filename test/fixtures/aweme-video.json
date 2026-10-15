@@ -1,0 +1,66 @@
+{
+  "aweme_id": "7694602355278543542",
+  "desc": "测试用作品 #hashtag 带/非法:字符*？和很长的尾巴用来验证文件名截断逻辑是否生效",
+  "create_time": 1791875791,
+  "author": { "nickname": "元宝✨", "sec_uid": "MS4wLjABAAAAfake" },
+  "statistics": { "digg_count": 154000, "comment_count": 1200, "share_count": 300, "play_count": 2000000 },
+  "video": {
+    "duration": 15034,
+    "width": 576,
+    "height": 1024,
+    "has_watermark": true,
+    "ratio": "540p",
+    "play_addr": {
+      "uri": "v2800fgi0000db4o4hnog65mrtsfigu0",
+      "width": 576,
+      "height": 1024,
+      "data_size": 2485417,
+      "file_hash": "c80675e80655ebdc2a1e92d063767355",
+      "url_list": ["https://example.invalid/default-h264.mp4"]
+    },
+    "play_addr_h264": {
+      "width": 576,
+      "height": 1024,
+      "data_size": 2485417,
+      "file_hash": "c80675e80655ebdc2a1e92d063767355",
+      "url_list": ["https://example.invalid/h264.mp4"]
+    },
+    "play_addr_lowbr": {
+      "width": 576,
+      "height": 1024,
+      "data_size": 2485417,
+      "file_hash": "c80675e80655ebdc2a1e92d063767355",
+      "url_list": ["https://example.invalid/lowbr.mp4"]
+    },
+    "play_addr_265": {
+      "width": 720,
+      "height": 1280,
+      "data_size": 1431413,
+      "file_hash": "8dfdcae8089418295896f5a12d0a0769",
+      "url_list": ["https://example.invalid/265.mp4"]
+    },
+    "download_addr": {
+      "width": 720,
+      "height": 720,
+      "data_size": 2485417,
+      "url_list": ["https://example.invalid/watermarked.mp4"]
+    },
+    "bit_rate": [
+      {
+        "gear_name": "720_1_1", "bit_rate": 761693, "quality_type": 11, "is_h265": 1,
+        "video_extra": "{\"definition\":\"720p\",\"u_vmaf\":97.7201}",
+        "play_addr": { "width": 720, "height": 1280, "data_size": 1431413, "file_hash": "8dfdcae8089418295896f5a12d0a0769", "url_list": ["https://example.invalid/720_1_1.mp4"] }
+      },
+      {
+        "gear_name": "720_2_1", "bit_rate": 657223, "quality_type": 12, "is_h265": 1,
+        "video_extra": "{\"definition\":\"720p\",\"u_vmaf\":95.9372}",
+        "play_addr": { "width": 720, "height": 1280, "data_size": 1235088, "file_hash": "5aa30f41417c4cc38e2f81228627a894", "url_list": ["https://example.invalid/720_2_1.mp4"] }
+      },
+      {
+        "gear_name": "540_1_1", "bit_rate": 568992, "quality_type": 22, "is_h265": 1,
+        "video_extra": "{\"definition\":\"540p\",\"u_vmaf\":95.6025}",
+        "play_addr": { "width": 576, "height": 1024, "data_size": 1069279, "file_hash": "f48ff92b1c2e47a0b60890ed31ea1336", "url_list": ["https://example.invalid/540_1_1.mp4"] }
+      }
+    ]
+  }
+}
