@@ -167,7 +167,8 @@ export async function parseShareUrl(shareUrl, {
       : '元宝 Cookie 无效或缺失，请检查是否复制了完整的 Cookie 头';
     throw new ChannelsError(`元宝拒绝了这次请求：${msg}（${hint}）`, 'COOKIE_INVALID');
   }
-  if (out.status !== 200 || !out.json) {
+  // 注意：这个端点正常也回 201（不是 200），别只认 200
+  if (out.status < 200 || out.status >= 300 || !out.json) {
     throw new ChannelsError(`元宝解析返回异常：HTTP ${out.status}`, 'UPSTREAM');
   }
 
@@ -229,7 +230,8 @@ export async function fetchFeedInfo(exportId, generalToken, {
     return r;
   }, { retries, onRetry: () => {} });
 
-  if (out.status !== 200 || !out.json) {
+  // 实测这个端点回的是 201 Created，不是 200 —— 只认 200 会直接把正常响应判失败
+  if (out.status < 200 || out.status >= 300 || !out.json) {
     throw new ChannelsError(`视频号接口返回异常：HTTP ${out.status}`, 'UPSTREAM');
   }
 

@@ -5,8 +5,8 @@
  * 并用真实响应核对过 data.feedInfo.authorInfo 等结构）：
  *   data.authorInfo.nickname / headImgUrl
  *   data.feedInfo.description / createtime / coverUrl / picInfo[] / bgmInfo
- *   data.feedInfo.h264VideoInfo.videoUrl   ← 兼容性好的那路
- *   data.feedInfo.h265VideoInfo.videoUrl   ← 更省流量的那路
+ *   data.feedInfo.h264VideoInfo.videoUrl   ← 实测分辨率与码率都更高，默认取它
+ *   data.feedInfo.h265VideoInfo.videoUrl   ← 压得更狠，省流量
  *   data.feedInfo.videoUrl                 ← 兜底
  *
  * 与抖音不同，这里**没有码率表**：视频号只给你「哪有」两三个地址，
@@ -82,11 +82,17 @@ export function enumerateChannelsStreams(feedInfo) {
   const h264 = fi.h264VideoInfo;
   const h265 = fi.h265VideoInfo;
 
-  if (!expandSpec(h264, { codec: 'h264', label: 'H.264 兼容版', gear: 'h264' })) {
-    push(pickUrl(h264), { codec: 'h264', label: 'H.264 兼容版', gear: 'h264' });
+  // 实测（2026-10-15，一条 15s 视频号作品）：
+  //   H.264 → 920x720 / 478 kb/s / 25fps
+  //   H.265 → 736x576 / 196 kb/s / 24fps
+  // 也就是 H.264 那路**分辨率更高、码率也更高**，不是单纯的"兼容备选"，
+  // 所以默认取它；H.265 才是真·省流量的那个。
+  // gear 留空：视频号没有抖音那种档位名，别硬造。
+  if (!expandSpec(h264, { codec: 'h264', label: 'H.264 高清兼容版', gear: null })) {
+    push(pickUrl(h264), { codec: 'h264', label: 'H.264 高清兼容版', gear: null });
   }
-  if (!expandSpec(h265, { codec: 'hevc', label: 'H.265 省空间版', gear: 'h265' })) {
-    push(pickUrl(h265), { codec: 'hevc', label: 'H.265 省空间版', gear: 'h265' });
+  if (!expandSpec(h265, { codec: 'hevc', label: 'H.265 省空间版', gear: null })) {
+    push(pickUrl(h265), { codec: 'hevc', label: 'H.265 省空间版', gear: null });
   }
   push(pickUrl(fi), { codec: 'h264', label: '默认流', gear: null });
 

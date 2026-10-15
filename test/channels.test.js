@@ -194,6 +194,14 @@ test('fetchFeedInfo: 5xx 会重试', async () => {
   assert.equal(n, 3, '前两次 503 应触发重试');
 });
 
+test('fetchFeedInfo: 201 是正常的（实测这个端点回 201 而不是 200）', async () => {
+  // 这个 case 是真联网跑出来的：写死只认 200 会把正常响应判成失败
+  const fetchImpl = mockFetch([[/get_feed_info/, () => json(feedFixture, 201)]]);
+  const r = await fetchFeedInfo('export/AAA', 'TOK', { fetchImpl });
+  assert.equal(r.errCode, 0);
+  assert.equal(fetchImpl.calls.length, 1, '201 不该被当成错误去重试');
+});
+
 // ---------------- 两步串起来 ----------------
 
 test('fetchChannelsFeed: 解析 → 取 feed 全链路（假 fetch）', async () => {
@@ -222,9 +230,10 @@ test('enumerateChannelsStreams: h264 / h265 各一路，videoUrl 兜底不重复
   const s = enumerateChannelsStreams(feedFixture.data.feedInfo);
   assert.equal(s.length, 2, 'videoUrl 与 h264VideoInfo 是同一个地址，不该出现第三条');
   assert.equal(s[0].codec, 'h264');
-  assert.equal(s[0].label, 'H.264 兼容版');
+  assert.equal(s[0].label, 'H.264 高清兼容版');
   assert.equal(s[1].codec, 'hevc');
   assert.equal(s[1].label, 'H.265 省空间版');
+  assert.equal(s[0].gear, null, '视频号没有抖音那种档位名，不能硬造');
   // 视频号不给 file_hash / 分辨率，这里必须老实留空，别编
   assert.equal(s[0].file_hash, null);
   assert.equal(s[0].size, null);
